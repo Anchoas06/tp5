@@ -10,12 +10,11 @@ import (
 )
 
 func main() {
-	//TODO Cambiar la URL para que acceda a una API diferente
-	url := "https://bitpay.com/api/rates"
+	url := "https://www.fruityvice.com/api/fruit/all"
         var rates []map[string]interface{}
 
 	spaceClient := http.Client{
-		Timeout: time.Second * 2, // Timeout after 2 seconds
+		Timeout: time.Second * 10, // Timeout after 10 seconds
 	}
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)
@@ -46,7 +45,6 @@ func main() {
 
 	//printing decoded array values one by one
 	for _, rate := range rates {
-		 //TODO Corregir los campos del JSON de acuerdo a la API accedida
-         fmt.Println("Code:", rate["code"], "Name:", rate["name"], "Rate:", rate["rate"])
+         fmt.Println("Code:",  rate["name"], "Rate:", rate["nutritions"])
 	}
 }
